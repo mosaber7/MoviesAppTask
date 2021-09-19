@@ -1,0 +1,6 @@
+framework module Pods_MoviesAppTask_GizaSys_MoviesAppTask_GizaSysUITests {
+  umbrella header "Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

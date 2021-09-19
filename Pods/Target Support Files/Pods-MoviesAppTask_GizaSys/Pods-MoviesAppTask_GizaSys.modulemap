@@ -1,0 +1,6 @@
+framework module Pods_MoviesAppTask_GizaSys {
+  umbrella header "Pods-MoviesAppTask_GizaSys-umbrella.h"
+
+  export *
+  module * { export * }
+}

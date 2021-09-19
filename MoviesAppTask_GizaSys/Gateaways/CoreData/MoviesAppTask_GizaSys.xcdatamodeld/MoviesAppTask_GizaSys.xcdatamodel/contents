@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20C5061b" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CategoryContainer" representedClassName="CategoryContainer" syncable="YES">
+        <attribute name="categories" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Category]"/>
+        <relationship name="category" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Category"/>
+    </entity>
+    <entity name="Channel" representedClassName="Channel" syncable="YES">
+        <attribute name="coverAssetURL" optional="YES" attributeType="String"/>
+        <attribute name="iconAssetURL" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="latestMedia" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[LatestMedia]"/>
+        <attribute name="mediaCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="series" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Series]"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+        <attribute name="thumbnailURL" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="latestMedias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LatestMedia"/>
+        <relationship name="seriess" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Series"/>
+    </entity>
+    <entity name="ChannelContainer" representedClassName="ChannelContainer" syncable="YES">
+        <attribute name="channels" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Channel]"/>
+        <relationship name="channel" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Channel"/>
+    </entity>
+    <entity name="LatestMedia" representedClassName="LatestMedia" syncable="YES">
+        <attribute name="coverAssetURL" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Media" representedClassName="Media" syncable="YES">
+        <attribute name="channelTitle" optional="YES" attributeType="String"/>
+        <attribute name="coverAssetURL" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="MediaContainer" representedClassName="MediaContainer" syncable="YES">
+        <attribute name="media" optional="YES" attributeType="Transformable" customClassName="[Media]"/>
+        <relationship name="medias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Media"/>
+    </entity>
+    <entity name="Series" representedClassName="Series" syncable="YES">
+        <attribute name="coverAssetURL" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CategoryContainer" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="Category" positionX="-54" positionY="0" width="128" height="44"/>
+        <element name="ChannelContainer" positionX="-36" positionY="27" width="128" height="59"/>
+        <element name="Channel" positionX="-18" positionY="45" width="128" height="194"/>
+        <element name="Series" positionX="18" positionY="72" width="128" height="14"/>
+        <element name="LatestMedia" positionX="36" positionY="81" width="128" height="14"/>
+        <element name="MediaContainer" positionX="-9" positionY="108" width="128" height="59"/>
+        <element name="Media" positionX="0" positionY="117" width="128" height="89"/>
+    </elements>
+</model>

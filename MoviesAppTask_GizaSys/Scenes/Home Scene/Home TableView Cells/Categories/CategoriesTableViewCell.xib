@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoriesTableViewCell" rowHeight="659" id="KGk-i7-Jjw" customClass="CategoriesTableViewCell" customModule="MoviesAppTask_GizaSys" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="434" height="659"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="434" height="659"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ly7-ca-ngx">
+                        <rect key="frame" x="0.0" y="107" width="213" height="520"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="520" id="HIx-Lc-gkk"/>
+                        </constraints>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="S54-bN-Tjm">
+                        <rect key="frame" x="221" y="107" width="213" height="520"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="520" id="yDZ-YN-Lhl"/>
+                        </constraints>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse by categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Aq-lg-oux">
+                        <rect key="frame" x="20" y="27" width="241" height="64"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <color key="textColor" name="MainLabelColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="BackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="S54-bN-Tjm" firstAttribute="width" secondItem="Ly7-ca-ngx" secondAttribute="width" id="2FD-1Z-L5Y"/>
+                    <constraint firstAttribute="bottom" secondItem="Ly7-ca-ngx" secondAttribute="bottom" constant="32" id="6mm-b3-tne"/>
+                    <constraint firstItem="Ly7-ca-ngx" firstAttribute="top" secondItem="2Aq-lg-oux" secondAttribute="bottom" constant="16" id="77O-sh-fxc"/>
+                    <constraint firstItem="2Aq-lg-oux" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="UaL-Jb-ogb"/>
+                    <constraint firstAttribute="trailing" secondItem="S54-bN-Tjm" secondAttribute="trailing" id="ZIu-Uu-fLF"/>
+                    <constraint firstAttribute="bottom" secondItem="S54-bN-Tjm" secondAttribute="bottom" constant="32" id="esz-cs-NQD"/>
+                    <constraint firstItem="S54-bN-Tjm" firstAttribute="leading" secondItem="Ly7-ca-ngx" secondAttribute="trailing" constant="8" id="jve-jL-88Z"/>
+                    <constraint firstItem="Ly7-ca-ngx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xEl-rP-9Gq"/>
+                    <constraint firstItem="2Aq-lg-oux" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="yfr-Eh-zYH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="BackgroundColor"/>
+            <connections>
+                <outlet property="leadingStackView" destination="Ly7-ca-ngx" id="jj6-Tq-iVS"/>
+                <outlet property="trailingStackView" destination="S54-bN-Tjm" id="aBB-dU-2mi"/>
+            </connections>
+            <point key="canvasLocation" x="-8.6956521739130448" y="-32.477678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BackgroundColor">
+            <color red="0.13300000131130219" green="0.14900000393390656" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainLabelColor">
+            <color red="0.75700002908706665" green="0.75700002908706665" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

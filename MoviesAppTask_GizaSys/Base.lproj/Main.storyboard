@@ -15,9 +15,31 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="va3-7t-IaN">
+                                <rect key="frame" x="16" y="44" width="382" height="818"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <color key="separatorColor" name="MainLabelColor"/>
+                                <color key="sectionIndexBackgroundColor" name="BackgroundColor"/>
+                                <color key="sectionIndexTrackingBackgroundColor" name="BackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="fqO-RR-cu7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0s2-1U-b1S"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="va3-7t-IaN" secondAttribute="bottom" id="1df-M8-Rak"/>
+                            <constraint firstItem="va3-7t-IaN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eUZ-xu-X3C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="va3-7t-IaN" secondAttribute="trailing" constant="16" id="gbH-aY-93I"/>
+                            <constraint firstItem="va3-7t-IaN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lYK-5J-ofc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="homeTableView" destination="va3-7t-IaN" id="u73-hU-P1j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,6 +49,9 @@
     <resources>
         <namedColor name="BackgroundColor">
             <color red="0.13300000131130219" green="0.14900000393390656" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainLabelColor">
+            <color red="0.75700002908706665" green="0.75700002908706665" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

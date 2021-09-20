@@ -9,6 +9,8 @@ import Foundation
 
 protocol  HomePresenterProtocol {
     var view: HomeViewProtocol?{get}
+    var numberOfRowsInSection: Int{get}
+    var categories: [Category]{get}
 
     
     func categoryContainerFetchedWithError(error: String)
@@ -28,9 +30,13 @@ class HomePresenter{
     weak var view: HomeViewProtocol?
     private var interactor: HomeInteractorProtocol?
     private var router: HomeRouterProtocol?
-    private var categories = [Category]()
+    var categories:  [Category] = [Category]()
     private var media = [Media]()
     private var channels = [Channel]()
+    
+    var numberOfRowsInSection: Int{
+        return 6
+    }
     
     init(view: HomeViewProtocol) {
         self.view = view

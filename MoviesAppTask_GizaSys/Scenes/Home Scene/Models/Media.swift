@@ -11,7 +11,7 @@ import CoreData
 // MARK: - Welcome
 @objc(MediaContainer)
 class MediaContainer: NSManagedObject, Codable {
-    var media: [Media]?
+    @NSManaged var media: [Media]?
     
     enum CodingKeys: String, CodingKey {
         case data
@@ -33,8 +33,8 @@ class MediaContainer: NSManagedObject, Codable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        var dataContainer = container.nestedContainer(keyedBy: DataCodingKeys.self, forKey: .data)
-        try dataContainer.encode(media, forKey: .categories)
+        var dataContainer = container.nestedContainer(keyedBy: MediaDataCodingKeys.self, forKey: .data)
+        try dataContainer.encode(media, forKey: .media)
     }
     
 }
@@ -48,9 +48,9 @@ enum MediaDataCodingKeys: String, CodingKey {
 // MARK: - Media
 @objc(Media)
 class Media: NSManagedObject, Codable {
-    var type, title: String?
-    var channelTitle: String?
-    var coverAssetURL: String?
+    @NSManaged var type, title: String?
+    @NSManaged var channelTitle: String?
+    @NSManaged var coverAssetURL: String?
     
     
     enum CodingKeys: String, CodingKey {

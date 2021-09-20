@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-protocol HomeInteractorProtocol {
-    func createHomeModel()-> UIViewController
+protocol HomeRouterProtocol {
+ //   func createHomeModel()-> UIViewController
 }
 
 protocol Route {
@@ -23,16 +23,14 @@ enum NavigationStyle {
 }
 
 
-class HomeRouter: HomeInteractorProtocol{
-    weak var vc: UIViewController?
-    func createHomeModel() -> UIViewController {
-        guard  let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "\(HomeViewController.self)") as? HomeViewController else{
-            
-            fatalError("Couldn't find VC with the identifies \(HomeViewController.self)")
-        }
-    return view
+class HomeRouter:NSObject{
+ private weak var viewController: HomeViewProtocol?
+    convenience init(view:HomeViewProtocol) {
+        self.init()
+        viewController = view
     }
-    
+}
+extension HomeRouter: HomeRouterProtocol{
     
 }
 

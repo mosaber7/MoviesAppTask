@@ -49,6 +49,7 @@ class CategoryContainer: NSManagedObject ,Codable {
 
 @objc(Category)
 class Category: NSManagedObject ,Codable {
+  
     
     @NSManaged var name: String?
     

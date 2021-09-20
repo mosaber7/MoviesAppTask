@@ -12,8 +12,9 @@ class NetworkManager{
     // Block to handle responses in case of success and have data
     typealias NetworkSuccessBlock = (_ T:Decodable?)->Void
     
-   static func retrieveCatgories<T>(modelType: T.Type, successBlock:@escaping NetworkSuccessBlock) where T : Decodable{
-        let req = MoviesRequestFactory.media
+    static func retrieveData<T>(modelType: T.Type, requestType: MoviesRequestFactory ,successBlock:@escaping NetworkSuccessBlock) where T : Decodable{
+    
+    let req = requestType
         AF.request(req).responseJSON { (response) in
             do{
                 guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
@@ -35,7 +36,6 @@ class NetworkManager{
                 }
             }catch let error{
                 print(error)
-                fatalError(error.localizedDescription)
             }
         }
         

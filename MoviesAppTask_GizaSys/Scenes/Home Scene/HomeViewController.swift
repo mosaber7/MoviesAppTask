@@ -7,15 +7,23 @@
 
 import UIKit
 
+protocol HomeViewProtocol: AnyObject {
+    var presenter: HomePresenterProtocol? {get}
+    func reloadData()
+}
 class HomeViewController: UIViewController {
-
+var presenter: HomePresenterProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkManager.retrieveCatgories(modelType: CategoryContainer.self) { (resonse) in
-            print(resonse)
-        }
+        presenter = HomePresenter(view: self)
+        presenter?.intiateView()
+       
     }
+}
 
-
+extension HomeViewController: HomeViewProtocol{
+    func reloadData() {
+    }
+    
 }
 

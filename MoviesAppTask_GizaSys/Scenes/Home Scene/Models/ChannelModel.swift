@@ -10,9 +10,10 @@ import CoreData
 
 // MARK: - Welcome
 @objc(ChannelContainer)
-class ChannelContainer: NSManagedObject ,Codable {
+class ChannelContainer: NSManagedObject, Codable {
     
     @NSManaged var channels: [Channel]?
+    
     enum CodingKeys: String, CodingKey {
         case data
     }
@@ -47,18 +48,15 @@ enum ChannelDataCodingKeys: String, CodingKey {
 // MARK: - Channel
 @objc(Channel)
 class Channel:NSManagedObject, Codable {
-    var title: String?
-    var series: [Series]?
-    var mediaCount: Int64?
-    var latestMedia: [LatestMedia]?
-    var id: String?
-    var thumbnailURL: String?
-    var iconAssetURL: String?
-    var coverAssetURL: String?
-    var slug: String?
+    @NSManaged var title: String?
+    @NSManaged var series: [Series]?
+    @NSManaged var latestMedia: [LatestMedia]?
+    @NSManaged var id: String?
+    @NSManaged var iconAssetURL: String?
+    @NSManaged var coverAssetURL: String?
     
     enum CodingKeys: String, CodingKey {
-        case title, mediaCount, id, slug
+        case title, mediaCount, id
         case iconAsset
         case coverAsset
         case series
@@ -76,9 +74,8 @@ class Channel:NSManagedObject, Codable {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.title = try container.decodeIfPresent(String.self, forKey: .title)
-        self.mediaCount = try container.decodeIfPresent(Int64.self, forKey: .mediaCount)
+//        self.mediaCount = try container.decodeIfPresent(Int64.self, forKey: .mediaCount)
         self.id = try container.decodeIfPresent(String.self, forKey: .id)
-        self.slug = try container.decodeIfPresent(String.self, forKey: .slug)
         self.series = try container.decodeIfPresent([Series].self, forKey: .series)
         self.latestMedia = try container.decodeIfPresent([LatestMedia].self, forKey: .latestMedia)
         
@@ -87,7 +84,6 @@ class Channel:NSManagedObject, Codable {
         
         let IconAssetContainer = try container.nestedContainer(keyedBy: IconAssetCodingKeys.self, forKey: .iconAsset)
         
-        self.thumbnailURL = try IconAssetContainer.decodeIfPresent(String.self, forKey: .thumbnailURL)
         self.iconAssetURL = try IconAssetContainer.decodeIfPresent(String.self, forKey: .iconAssetURL)
         
     }
@@ -95,9 +91,8 @@ class Channel:NSManagedObject, Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(mediaCount, forKey: .mediaCount)
+//        try container.encodeIfPresent(mediaCount, forKey: .mediaCount)
         try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(slug, forKey: .slug)
         try container.encodeIfPresent(series, forKey: .series)
         try container.encodeIfPresent(latestMedia, forKey: .latestMedia)
         
@@ -106,7 +101,6 @@ class Channel:NSManagedObject, Codable {
         
         var IconAssetContainer =  container.nestedContainer(keyedBy: IconAssetCodingKeys.self, forKey: .iconAsset)
         try IconAssetContainer.encodeIfPresent(iconAssetURL, forKey: .iconAssetURL)
-        try IconAssetContainer.encodeIfPresent(thumbnailURL, forKey: .thumbnailURL)
         
     }
     
@@ -120,8 +114,7 @@ enum CoverAssetCodingKeys: String, CodingKey {
 
 // MARK: - IconAsset
 enum IconAssetCodingKeys: String, CodingKey {
-    case thumbnailURL = "thumbnailUrl"
-    case iconAssetURL = "url"
+    case iconAssetURL = "thumbnailUrl"
 }
 
 // MARK: - LatestMedia

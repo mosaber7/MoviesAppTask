@@ -79,6 +79,8 @@
             <color key="backgroundColor" name="BackgroundColor"/>
             <connections>
                 <outlet property="eposidesCollectionView" destination="Zay-J0-uKH" id="ACh-R2-z7A"/>
+                <outlet property="sectionImageImageView" destination="XBh-KY-lI8" id="Neh-s3-15U"/>
+                <outlet property="sectionNameLabel" destination="nze-kK-QnT" id="KA2-mK-mEf"/>
             </connections>
             <point key="canvasLocation" x="165.94202898550725" y="115.17857142857142"/>
         </tableViewCell>

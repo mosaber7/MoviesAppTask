@@ -56,7 +56,7 @@ class Channel:NSManagedObject, Codable {
     @NSManaged var coverAssetURL: String?
     
     enum CodingKeys: String, CodingKey {
-        case title, mediaCount, id
+        case title,  id
         case iconAsset
         case coverAsset
         case series
@@ -81,26 +81,25 @@ class Channel:NSManagedObject, Codable {
         
         let coverAssetContainer = try container.nestedContainer(keyedBy: CoverAssetCodingKeys.self, forKey: .coverAsset)
         self.coverAssetURL = try coverAssetContainer.decodeIfPresent(String.self, forKey: .url)
-        
+
         let IconAssetContainer = try container.nestedContainer(keyedBy: IconAssetCodingKeys.self, forKey: .iconAsset)
         
-        self.iconAssetURL = try IconAssetContainer.decodeIfPresent(String.self, forKey: .iconAssetURL)
+        self.iconAssetURL = try IconAssetContainer.decodeIfPresent(String.self, forKey: .thumbnailUrl)
         
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(title, forKey: .title)
-//        try container.encodeIfPresent(mediaCount, forKey: .mediaCount)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(series, forKey: .series)
         try container.encodeIfPresent(latestMedia, forKey: .latestMedia)
-        
+
         var coverAssetContainer =  container.nestedContainer(keyedBy: CoverAssetCodingKeys.self, forKey: .coverAsset)
         try coverAssetContainer.encodeIfPresent(coverAssetURL, forKey: .url)
         
         var IconAssetContainer =  container.nestedContainer(keyedBy: IconAssetCodingKeys.self, forKey: .iconAsset)
-        try IconAssetContainer.encodeIfPresent(iconAssetURL, forKey: .iconAssetURL)
+        try IconAssetContainer.encodeIfPresent(iconAssetURL, forKey: .thumbnailUrl)
         
     }
     
@@ -114,7 +113,7 @@ enum CoverAssetCodingKeys: String, CodingKey {
 
 // MARK: - IconAsset
 enum IconAssetCodingKeys: String, CodingKey {
-    case iconAssetURL = "thumbnailUrl"
+    case thumbnailUrl
 }
 
 // MARK: - LatestMedia

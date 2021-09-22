@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewProtocol{
     func reloadData() {
         homeTableView.reloadData()
+        
     }
     
 }
@@ -43,19 +44,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0{
+        switch indexPath.row {
+        case 0:
             let cell = homeTableView.dequeue() as MediaTableViewCell
+            self.presenter?.configureMediaCell(cell: cell)
             return cell
-        }
-        if indexPath.row == 5 {
+        case 5:
             let cell = homeTableView.dequeue() as CategoriesTableViewCell
             cell.fillStackViews(categories: presenter?.categories ?? [])
             return cell
+        default:
+            let cell = homeTableView.dequeue() as ChannelsTableViewCell
             
+            return cell
         }
-        let cell = homeTableView.dequeue() as ChannelsTableViewCell
-        
-        return cell
         
     } 
     

@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
+
+protocol ChannelTVCellProtocol {
+    func configureTableViewCell(channel: Channel)
+}
 
 class ChannelsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var eposidesCollectionView: UICollectionView!
+    @IBOutlet private weak var sectionImageImageView: UIImageView!
+    @IBOutlet private weak var sectionNameLabel: UILabel!
+    @IBOutlet private weak var eposidesCollectionView: UICollectionView!
+    private var channel: Channel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,11 +44,28 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.eposidesCollectionView.dequeue(for: indexPath) as ChannelsCollectionViewCell
+        guard let channel  = channel, let media = channel.latestMedia else {
+            return cell
+        }
+        cell.configCell(with: media[indexPath.row] )
         return cell
         
     }
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: eposidesCollectionView.frame.width * 0.4, height: eposidesCollectionView.frame.height)
+    }
+    
+    
+}
+
+extension ChannelsTableViewCell: ChannelTVCellProtocol{
+    func configureTableViewCell(channel: Channel) {
+        self.channel = channel
+        sectionNameLabel.text = channel.title
+        guard let urlString = channel.iconAssetURL, let url = URL(string: urlString) else{
+            return
+        }
+        sectionImageImageView.kf.setImage(with: url)
     }
     
     

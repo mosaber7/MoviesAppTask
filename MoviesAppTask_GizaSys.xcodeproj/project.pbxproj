@@ -36,8 +36,9 @@
 		05D9592926F7AD8000292293 /* categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9592826F7AD8000292293 /* categories.swift */; };
 		05D9593426F7BFB000292293 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9593326F7BFB000292293 /* Constants.swift */; };
 		05D9593A26F7C0D400292293 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9593926F7C0D400292293 /* Array + Extension.swift */; };
-		05D9593F26F7C1AB00292293 /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9593E26F7C1AB00292293 /* ChannelModel.swift */; };
+		05D9593F26F7C1AB00292293 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9593E26F7C1AB00292293 /* Channel.swift */; };
 		05D9594426F7D69600292293 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9594326F7D69600292293 /* Media.swift */; };
+		05FCDB1126FA2AD700007C94 /* MoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */; };
 		82FBB17C2CBFD9D5C9264327 /* Pods_MoviesAppTask_GizaSysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E32BE82EDB5CEFA1103C21 /* Pods_MoviesAppTask_GizaSysTests.framework */; };
 		A07EB09D0206E05B1CD1615E /* Pods_MoviesAppTask_GizaSys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1BC9D2FD9AFCB0F623D178 /* Pods_MoviesAppTask_GizaSys.framework */; };
 		C2B32F0325681ECD8CB45F83 /* Pods_MoviesAppTask_GizaSys_MoviesAppTask_GizaSysUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76328C2C20E60FFC8D2DB344 /* Pods_MoviesAppTask_GizaSys_MoviesAppTask_GizaSysUITests.framework */; };
@@ -96,8 +97,9 @@
 		05D9592826F7AD8000292293 /* categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categories.swift; sourceTree = "<group>"; };
 		05D9593326F7BFB000292293 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05D9593926F7C0D400292293 /* Array + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
-		05D9593E26F7C1AB00292293 /* ChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
+		05D9593E26F7C1AB00292293 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		05D9594326F7D69600292293 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		05FCDB1026FA2AD700007C94 /* MoviesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesApp.xcdatamodel; sourceTree = "<group>"; };
 		0D90434251F90E6AD8D93AA2 /* Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CE896BF7B52AA4BF64C87EC /* Pods-MoviesAppTask_GizaSys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys.release.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys/Pods-MoviesAppTask_GizaSys.release.xcconfig"; sourceTree = "<group>"; };
 		63E8045092106E68E32B3D27 /* Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.release.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				05D958EE26F77B5D00292293 /* Scenes */,
 				05D958BE26F7710D00292293 /* Main.storyboard */,
 				05D958C926F7710E00292293 /* Info.plist */,
+				05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */,
 			);
 			path = MoviesAppTask_GizaSys;
 			sourceTree = "<group>";
@@ -329,7 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				05D9592826F7AD8000292293 /* categories.swift */,
-				05D9593E26F7C1AB00292293 /* ChannelModel.swift */,
+				05D9593E26F7C1AB00292293 /* Channel.swift */,
 				05D9594326F7D69600292293 /* Media.swift */,
 			);
 			path = Models;
@@ -616,10 +619,11 @@
 				05D958F526F77B9C00292293 /* HomePresenter.swift in Sources */,
 				05B6055E26F90B3A00523B4D /* MediaTableViewCell.swift in Sources */,
 				05D958BB26F7710D00292293 /* SceneDelegate.swift in Sources */,
+				05FCDB1126FA2AD700007C94 /* MoviesApp.xcdatamodeld in Sources */,
 				05B6056926F90D5F00523B4D /* MediaCollectionViewCell.swift in Sources */,
 				05D9593426F7BFB000292293 /* Constants.swift in Sources */,
 				05D9593A26F7C0D400292293 /* Array + Extension.swift in Sources */,
-				05D9593F26F7C1AB00292293 /* ChannelModel.swift in Sources */,
+				05D9593F26F7C1AB00292293 /* Channel.swift in Sources */,
 				05D9594426F7D69600292293 /* Media.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -962,6 +966,16 @@
 			);
 			currentVersion = 05D958C226F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodel */;
 			path = MoviesAppTask_GizaSys.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				05FCDB1026FA2AD700007C94 /* MoviesApp.xcdatamodel */,
+			);
+			currentVersion = 05FCDB1026FA2AD700007C94 /* MoviesApp.xcdatamodel */;
+			path = MoviesApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

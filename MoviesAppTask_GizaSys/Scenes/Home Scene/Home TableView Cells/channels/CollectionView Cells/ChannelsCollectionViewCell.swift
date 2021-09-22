@@ -15,6 +15,12 @@ class ChannelsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         channelImageView.layer.cornerRadius = 10
     }
-
+    func configCell(with media: LatestMedia){
+        channelTitleLabel.text = media.title
+        guard let urlString = media.coverAssetURL, let url = URL(string: urlString) else {
+            return
+        }
+        channelImageView.kf.setImage(with: url)
+    }
 
 }

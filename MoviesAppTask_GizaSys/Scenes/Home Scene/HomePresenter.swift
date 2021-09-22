@@ -22,6 +22,8 @@ protocol  HomePresenterProtocol {
     func channelContainerFetchedSuccessfully(channels: [Channel])
     func channelContainerFetchedWithError(error: String)
     
+    func configureMediaCell(cell: MediaTVCellProtocol)
+    
     func intiateView()
     
 }
@@ -31,7 +33,7 @@ class HomePresenter{
     private var interactor: HomeInteractorProtocol?
     private var router: HomeRouterProtocol?
     var categories:  [Category] = [Category]()
-    private var media = [Media]()
+     var media = [Media]()
     private var channels = [Channel]()
     
     var numberOfRowsInSection: Int{
@@ -48,10 +50,10 @@ class HomePresenter{
 extension HomePresenter: HomePresenterProtocol {
     
     func intiateView() {
-        self.interactor?.getCategories()
-        self.interactor?.getMedia()
-        
-    //   self.interactor?.getChannels()
+//        self.interactor?.getCategories()
+//        self.interactor?.getMedia()
+//        self.view?.reloadData()
+//       self.interactor?.getChannels()
     }
     
     func categoryContainerFetchedWithError(error: String) {
@@ -65,8 +67,9 @@ extension HomePresenter: HomePresenterProtocol {
     
     func mediaContainerFetchedSuccessfully(media: [Media]) {
         self.media = media
+        self.view?.reloadData()
         print("media fetched successfully")
-        print("Media: \(media.count)")
+
     }
     
     func mediaContainerFetchedWithError(error: String) {
@@ -75,9 +78,8 @@ extension HomePresenter: HomePresenterProtocol {
     
     func channelContainerFetchedSuccessfully(channels: [Channel]) {
         self.channels = channels
-        print(channels.first)
+        self.view?.reloadData()
         print("channels fetched successfully")
-        print(channels.count)
 
     }
     
@@ -85,5 +87,10 @@ extension HomePresenter: HomePresenterProtocol {
         print("channels fetching error: \(error)")
 
     }
+    func configureMediaCell(cell: MediaTVCellProtocol){
+        cell.configureCollectionCells(with: media)
+        cell.reloadData()
+    }
+    
     
 }

@@ -13,15 +13,15 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaTableViewCell" rowHeight="441" id="KGk-i7-Jjw" customClass="MediaTableViewCell" customModule="MoviesAppTask_GizaSys" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="262" height="441"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="262" height="441"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="p4p-Ci-MQc">
-                        <rect key="frame" x="0.0" y="131" width="262" height="310"/>
+                        <rect key="frame" x="0.0" y="99" width="262" height="400"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="310" id="cNq-lM-SJu"/>
+                            <constraint firstAttribute="height" constant="400" id="cNq-lM-SJu"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="htH-Np-9Bf">
                             <size key="itemSize" width="128" height="128"/>
@@ -35,7 +35,7 @@
                         </connections>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Eposides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNK-Zd-qO6">
-                        <rect key="frame" x="0.0" y="43" width="132.5" height="56"/>
+                        <rect key="frame" x="0.0" y="43" width="132.5" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" name="SecondaryLabelColor"/>
                         <nil key="highlightedColor"/>

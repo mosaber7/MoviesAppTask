@@ -50,6 +50,7 @@ extension HomeInteractor: HomeInteractorProtocol{
     func getChannels() {
         NetworkManager.retrieveData(modelType: ChannelContainer.self, requestType: MoviesRequestFactory.channels) { [weak self](channelsContainer) in
             guard let container = channelsContainer as? ChannelContainer, let channels = container.channels else{
+                print(channelsContainer)
                 self?.presenter?.channelContainerFetchedWithError(error: "Could not cast the response")
                 return
             }

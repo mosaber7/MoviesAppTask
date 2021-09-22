@@ -25,6 +25,26 @@ extension UITableView{
     }
     
 }
+protocol NavigationRoute {
+    func navigate(to route: Route)
+}
+
+extension UIViewController: NavigationRoute{
+    func navigate(to route: Route) {
+        switch route.style {
+        
+        case .push:
+            self.navigationController?.pushViewController(route.destination, animated: true)
+        case .modal:
+            
+            self.present(route.destination, animated: true, completion: nil)
+        }
+    }
+    
+    
+}
+
+
 
 extension UICollectionView{
     func dequeue<Cell: UICollectionViewCell>(for index: IndexPath) -> Cell {

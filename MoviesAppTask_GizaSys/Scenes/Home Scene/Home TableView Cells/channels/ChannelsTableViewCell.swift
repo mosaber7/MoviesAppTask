@@ -19,22 +19,35 @@ class ChannelsTableViewCell: UITableViewCell {
     @IBOutlet private weak var sectionImageImageView: UIImageView!
     @IBOutlet private weak var sectionNameLabel: UILabel!
     @IBOutlet private weak var eposidesCollectionView: UICollectionView!
+    @IBOutlet weak var channelImageLoader: UIActivityIndicatorView!
     private var channel: Channel?
     
+    // for navigation to details screen
+    var onDidSelectItem: ((IndexPath) -> ())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         registerCells()
+        showLoader()
         
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     private func registerCells(){
         eposidesCollectionView.registerNib(cell: ChannelsCollectionViewCell.self)
+    }
+    private func showLoader(){
+        channelImageLoader.isHidden = false
+        channelImageLoader.startAnimating()
+    }
+    private func hideLoader(){
+        channelImageLoader.stopAnimating()
+        channelImageLoader.isHidden = true
+        
     }
     
 }
@@ -52,8 +65,13 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
             return cell
         }
         cell.configCell(with: media[indexPath.row] )
+        
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.onDidSelectItem?(indexPath)
     }
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: eposidesCollectionView.frame.width * 0.4, height: eposidesCollectionView.frame.height)
@@ -71,6 +89,7 @@ extension ChannelsTableViewCell: ChannelTVCellProtocol{
             return
         }
         sectionImageImageView.kf.setImage(with: url)
+        hideLoader()
     }
     
     

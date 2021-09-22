@@ -12,6 +12,7 @@ protocol  HomePresenterProtocol {
     var view: HomeViewProtocol?{get}
     var numberOfRowsInSection: Int{get}
     var categories: [Category]{get}
+    var media: [Media]{get}
 
     
     func categoryContainerFetchedWithError(error: String)
@@ -35,7 +36,7 @@ class HomePresenter{
     private var interactor: HomeInteractorProtocol?
     private var router: HomeRouterProtocol?
     var categories:  [Category] = [Category]()
-     var media = [Media]()
+    var media = [Media]()
     private var channels = [Channel]()
     
     var numberOfRowsInSection: Int{
@@ -53,8 +54,8 @@ class HomePresenter{
 extension HomePresenter: HomePresenterProtocol {
     
     func intiateView() {
-//        self.interactor?.getCategories()
-//        self.interactor?.getMedia()
+        self.interactor?.getCategories()
+        self.interactor?.getMedia()
        self.interactor?.getChannels()
         self.view?.reloadData()
 

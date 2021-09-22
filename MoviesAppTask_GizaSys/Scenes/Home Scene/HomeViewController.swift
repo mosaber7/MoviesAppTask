@@ -51,6 +51,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             let cell = homeTableView.dequeue() as MediaTableViewCell
             self.presenter?.configureMediaCell(cell: cell)
+            cell.onDidSelectItem = {(indexPath) in
+                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[0]))
+                print("here")
+            }
             return cell
         case 5:
             let cell = homeTableView.dequeue() as CategoriesTableViewCell
@@ -58,7 +62,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         default:
             let cell = homeTableView.dequeue() as ChannelsTableViewCell
-            
+            cell.onDidSelectItem = {(indexPath) in
+                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[0]))
+            }
             return cell
         }
         

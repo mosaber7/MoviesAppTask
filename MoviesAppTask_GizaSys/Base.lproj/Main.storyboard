@@ -49,7 +49,7 @@
         <!--Details View Controller-->
         <scene sceneID="1k0-17-CHT">
             <objects>
-                <viewController id="mtH-h4-jx1" customClass="DetailsViewController" customModule="MoviesAppTask_GizaSys" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="mtH-h4-jx1" customClass="DetailsViewController" customModule="MoviesAppTask_GizaSys" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VpP-tW-NHc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

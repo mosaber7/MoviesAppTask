@@ -16,10 +16,10 @@ protocol CategoriesTableViewCellProtocol {
 
 //MARK: - CategoriesTableViewCell
 class CategoriesTableViewCell: UITableViewCell {
-    @IBOutlet weak var leadingStackView: UIStackView!
-    @IBOutlet weak var trailingStackView: UIStackView!
+    @IBOutlet private weak var leadingStackView: UIStackView!
+    @IBOutlet private weak var trailingStackView: UIStackView!
     
-    var allButtons = [UIButton]()
+   private var allButtons = [UIButton]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +29,13 @@ class CategoriesTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    @objc private func categoryIsClicked(_ sender: UIButton){
+        guard let categoryIndex = allButtons.firstIndex(of: sender) else{
+            return
+        }
+        print("category clicked index:  \(categoryIndex)")
     }
     
 }
@@ -57,6 +64,7 @@ extension CategoriesTableViewCell: CategoriesTableViewCellProtocol{
             }else{
                 trailingStackView.addArrangedSubview(button)
             }
+            button.addTarget(self, action: #selector(categoryIsClicked), for: .touchUpInside)
         }
     }
    

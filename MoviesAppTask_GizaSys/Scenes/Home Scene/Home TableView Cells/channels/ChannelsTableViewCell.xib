@@ -43,7 +43,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="78 eposides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1j-uN-e9b">
-                        <rect key="frame" x="66" y="56" width="107" height="24"/>
+                        <rect key="frame" x="66" y="56" width="435" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="L58-lm-DDb"/>
                         </constraints>
@@ -52,7 +52,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="MindValley Mentoring" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nze-kK-QnT">
-                        <rect key="frame" x="66" y="24" width="243" height="24"/>
+                        <rect key="frame" x="66" y="24" width="435" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="zn0-TM-KOB"/>
                         </constraints>
@@ -60,16 +60,28 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JyD-Dn-5le">
+                        <rect key="frame" x="18" y="40" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="ti3-pK-zwy"/>
+                            <constraint firstAttribute="width" constant="30" id="zPc-dJ-YFc"/>
+                        </constraints>
+                        <color key="color" name="AccentColor"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" name="BackgroundColor"/>
                 <constraints>
                     <constraint firstItem="XBh-KY-lI8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4db-yW-DnK"/>
+                    <constraint firstAttribute="trailing" secondItem="nze-kK-QnT" secondAttribute="trailing" id="56K-eD-HEj"/>
                     <constraint firstItem="nze-kK-QnT" firstAttribute="leading" secondItem="XBh-KY-lI8" secondAttribute="trailing" constant="8" id="9lE-Rm-f34"/>
                     <constraint firstItem="nze-kK-QnT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="LVX-Ja-Jkz"/>
                     <constraint firstItem="Zay-J0-uKH" firstAttribute="top" secondItem="x1j-uN-e9b" secondAttribute="bottom" constant="16" id="PsA-xz-HMd"/>
+                    <constraint firstItem="JyD-Dn-5le" firstAttribute="leading" secondItem="XBh-KY-lI8" secondAttribute="trailing" constant="-40" id="Rwa-BT-TsK"/>
                     <constraint firstAttribute="bottom" secondItem="Zay-J0-uKH" secondAttribute="bottom" constant="32" id="Vp0-cW-aAH"/>
                     <constraint firstItem="x1j-uN-e9b" firstAttribute="top" secondItem="nze-kK-QnT" secondAttribute="bottom" constant="8" id="WRN-RE-0ZL"/>
                     <constraint firstItem="Zay-J0-uKH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="dZa-er-NaG"/>
+                    <constraint firstAttribute="trailing" secondItem="x1j-uN-e9b" secondAttribute="trailing" id="eMd-iy-tlD"/>
+                    <constraint firstItem="JyD-Dn-5le" firstAttribute="top" secondItem="XBh-KY-lI8" secondAttribute="bottom" constant="-40" id="f6h-8U-LEQ"/>
                     <constraint firstAttribute="trailing" secondItem="Zay-J0-uKH" secondAttribute="trailing" id="sRN-f7-Kg9"/>
                     <constraint firstItem="x1j-uN-e9b" firstAttribute="leading" secondItem="nze-kK-QnT" secondAttribute="leading" id="tsc-z1-oU8"/>
                     <constraint firstItem="Zay-J0-uKH" firstAttribute="top" secondItem="XBh-KY-lI8" secondAttribute="bottom" constant="16" id="yIu-mp-UPc"/>
@@ -78,6 +90,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="BackgroundColor"/>
             <connections>
+                <outlet property="channelImageLoader" destination="JyD-Dn-5le" id="hew-Zg-4nn"/>
                 <outlet property="eposidesCollectionView" destination="Zay-J0-uKH" id="ACh-R2-z7A"/>
                 <outlet property="sectionImageImageView" destination="XBh-KY-lI8" id="Neh-s3-15U"/>
                 <outlet property="sectionNameLabel" destination="nze-kK-QnT" id="KA2-mK-mEf"/>
@@ -86,6 +99,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BackgroundColor">
             <color red="0.13300000131130219" green="0.14900000393390656" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

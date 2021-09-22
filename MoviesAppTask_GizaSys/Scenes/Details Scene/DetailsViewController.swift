@@ -21,8 +21,8 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = DetailsPresenter(view: self)
-
+        title = presenter?.title
+       
     }
     
 }

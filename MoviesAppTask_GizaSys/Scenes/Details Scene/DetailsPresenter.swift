@@ -11,14 +11,19 @@ import Foundation
 //MARK:- DetailsPresenterProtocol
 protocol DetailsPresenterProtocol {
     var view: DetailsViewProtocol? {get}
+    var title: String{get}
 }
 
 //MARK:- DetailsPresenter
 class DetailsPresenter{
     weak var view: DetailsViewProtocol?
-    
-    init(view: DetailsViewProtocol) {
+    var channel : Media?
+    init(view: DetailsViewProtocol, channel: Media?) {
         self.view = view
+        self.channel = channel
+    }
+    var title: String{
+        return channel?.title ?? "??"
     }
 }
 //MARK:- DetailsPresenter confirming to DetailsPresenterProtocol

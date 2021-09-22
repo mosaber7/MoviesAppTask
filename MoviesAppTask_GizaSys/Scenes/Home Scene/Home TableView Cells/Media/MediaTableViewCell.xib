@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaTableViewCell" rowHeight="441" id="KGk-i7-Jjw" customClass="MediaTableViewCell" customModule="MoviesAppTask_GizaSys" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="262" height="441"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MediaTableViewCell" rowHeight="528" id="KGk-i7-Jjw" customClass="MediaTableViewCell" customModule="MoviesAppTask_GizaSys" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="264" height="528"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="262" height="441"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="264" height="528"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="p4p-Ci-MQc">
-                        <rect key="frame" x="0.0" y="99" width="262" height="400"/>
+                        <rect key="frame" x="0.0" y="128" width="264" height="400"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="400" id="cNq-lM-SJu"/>
@@ -35,7 +35,7 @@
                         </connections>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Eposides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNK-Zd-qO6">
-                        <rect key="frame" x="0.0" y="43" width="132.5" height="24"/>
+                        <rect key="frame" x="0.0" y="43" width="264" height="53"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" name="SecondaryLabelColor"/>
                         <nil key="highlightedColor"/>
@@ -48,6 +48,7 @@
                     <constraint firstItem="bNK-Zd-qO6" firstAttribute="leading" secondItem="p4p-Ci-MQc" secondAttribute="leading" id="ezu-Dx-cfM"/>
                     <constraint firstItem="p4p-Ci-MQc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kx3-Jh-uRh"/>
                     <constraint firstAttribute="trailing" secondItem="p4p-Ci-MQc" secondAttribute="trailing" id="mJZ-Qd-Saa"/>
+                    <constraint firstAttribute="trailing" secondItem="bNK-Zd-qO6" secondAttribute="trailing" id="q8u-9f-mMF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -55,7 +56,7 @@
             <connections>
                 <outlet property="mediaCollectionView" destination="p4p-Ci-MQc" id="6eu-zG-ihe"/>
             </connections>
-            <point key="canvasLocation" x="2.8985507246376816" y="123.54910714285714"/>
+            <point key="canvasLocation" x="4.3478260869565224" y="152.67857142857142"/>
         </tableViewCell>
     </objects>
     <resources>

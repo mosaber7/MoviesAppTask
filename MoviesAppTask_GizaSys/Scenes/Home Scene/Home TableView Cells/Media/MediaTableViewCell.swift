@@ -18,10 +18,12 @@ protocol MediaTVCellProtocol {
 
 //MARK: - Media table view cell
 class MediaTableViewCell: UITableViewCell {
-
     @IBOutlet weak var mediaCollectionView: UICollectionView!
     private var media = [Media]()
     
+    // for navigation
+    var onDidSelectItem: ((IndexPath) -> ())?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 registerCell()
@@ -58,6 +60,10 @@ extension MediaTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: mediaCollectionView.frame.width * 0.45, height: mediaCollectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.onDidSelectItem?(indexPath)
     }
     
 }

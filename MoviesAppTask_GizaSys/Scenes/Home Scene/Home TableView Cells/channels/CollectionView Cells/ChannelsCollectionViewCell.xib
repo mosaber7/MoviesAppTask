@@ -19,7 +19,6 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FLP-dL-SeU">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="240"/>
-                        <color key="backgroundColor" red="0.1333333333" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="150" id="6rf-u2-Ern"/>
                             <constraint firstAttribute="height" constant="240" id="iI4-nI-uoF"/>
@@ -28,12 +27,20 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLr-6f-EMM">
                         <rect key="frame" x="0.0" y="248" width="118" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="5Oh-KN-5pR"/>
+                            <constraint firstAttribute="height" constant="24" id="kkE-w6-Hnq"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bWV-AA-zNw">
+                        <rect key="frame" x="57.5" y="131" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="v1T-cL-NSH"/>
+                            <constraint firstAttribute="width" constant="35" id="y9M-sN-oJG"/>
+                        </constraints>
+                        <color key="color" name="AccentColor"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -42,20 +49,26 @@
                 <constraint firstItem="oLr-6f-EMM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="71b-hJ-jGv"/>
                 <constraint firstAttribute="trailing" secondItem="FLP-dL-SeU" secondAttribute="trailing" id="DAF-Pv-MXa"/>
                 <constraint firstItem="FLP-dL-SeU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EiB-vv-ZGo"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="oLr-6f-EMM" secondAttribute="bottom" constant="25" id="ZPH-vZ-vRt"/>
                 <constraint firstAttribute="trailing" secondItem="oLr-6f-EMM" secondAttribute="trailing" constant="32" id="bAG-TH-ec1"/>
                 <constraint firstItem="oLr-6f-EMM" firstAttribute="top" secondItem="FLP-dL-SeU" secondAttribute="bottom" constant="8" id="cw5-qm-hR8"/>
                 <constraint firstItem="FLP-dL-SeU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lVk-nd-vHy"/>
-                <constraint firstAttribute="bottom" secondItem="oLr-6f-EMM" secondAttribute="bottom" constant="8" id="v6U-4T-lw8"/>
+                <constraint firstItem="bWV-AA-zNw" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="qjD-1I-vPD"/>
+                <constraint firstItem="bWV-AA-zNw" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="rjN-mK-WlD"/>
             </constraints>
             <size key="customSize" width="150" height="297"/>
             <connections>
                 <outlet property="channelImageView" destination="FLP-dL-SeU" id="43t-yj-TNy"/>
                 <outlet property="channelTitleLabel" destination="oLr-6f-EMM" id="yqc-pi-sDc"/>
+                <outlet property="loader" destination="bWV-AA-zNw" id="Isn-8J-qEB"/>
             </connections>
             <point key="canvasLocation" x="105.79710144927537" y="183.81696428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BackgroundColor">
             <color red="0.13300000131130219" green="0.14900000393390656" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

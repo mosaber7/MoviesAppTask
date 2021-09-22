@@ -10,10 +10,12 @@ import UIKit
 class ChannelsCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var channelImageView: UIImageView!
     @IBOutlet private weak var channelTitleLabel: UILabel!
+    @IBOutlet private weak var loader: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         channelImageView.layer.cornerRadius = 10
+        showLoader()
     }
     func configCell(with media: LatestMedia){
         channelTitleLabel.text = media.title
@@ -21,6 +23,15 @@ class ChannelsCollectionViewCell: UICollectionViewCell {
             return
         }
         channelImageView.kf.setImage(with: url)
+        hideLoader()
     }
-
+    private func showLoader(){
+        loader.isHidden = false
+        loader.startAnimating()
+    }
+    private func hideLoader(){
+        loader.stopAnimating()
+        loader.isHidden = true
+        
+    }
 }

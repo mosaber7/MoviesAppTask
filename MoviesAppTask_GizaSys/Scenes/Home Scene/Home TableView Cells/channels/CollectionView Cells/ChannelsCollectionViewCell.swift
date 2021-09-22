@@ -15,20 +15,18 @@ class ChannelsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         channelImageView.layer.cornerRadius = 10
-        showLoader()
     }
+    
     func configCell(with media: LatestMedia){
+
         channelTitleLabel.text = media.title
-        guard let urlString = media.coverAssetURL, let url = URL(string: urlString) else {
-            return
-        }
-        channelImageView.kf.setImage(with: url)
-        hideLoader()
+//        guard let urlString = media.coverAssetURL, let url = URL(string: urlString) else {
+//            return
+//        }
+//        channelImageView.kf.setImage(with: url)
+ //       hideLoader()
     }
-    private func showLoader(){
-        loader.isHidden = false
-        loader.startAnimating()
-    }
+    
     private func hideLoader(){
         loader.stopAnimating()
         loader.isHidden = true

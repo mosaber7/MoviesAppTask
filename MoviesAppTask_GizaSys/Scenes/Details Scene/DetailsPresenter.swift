@@ -12,6 +12,7 @@ import Foundation
 protocol DetailsPresenterProtocol {
     var view: DetailsViewProtocol? {get}
     var title: String{get}
+    func intiateView()
 }
 
 //MARK:- DetailsPresenter
@@ -25,8 +26,16 @@ class DetailsPresenter{
     var title: String{
         return channel?.title ?? "??"
     }
+    
 }
 //MARK:- DetailsPresenter confirming to DetailsPresenterProtocol
 extension DetailsPresenter: DetailsPresenterProtocol{
+    func intiateView() {
+        guard let urlString = channel?.coverAssetURL, let url = URL(string: urlString) else {
+            return
+        }
+        view?.setImage(with: url)
+    }
+    
     
 }

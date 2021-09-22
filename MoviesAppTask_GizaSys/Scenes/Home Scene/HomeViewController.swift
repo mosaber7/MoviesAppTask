@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         registerCells()
         presenter = HomePresenter(view: self)
         presenter?.intiateView()
-       
+        
     }
     
     private func registerCells(){
@@ -52,8 +52,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = homeTableView.dequeue() as MediaTableViewCell
             self.presenter?.configureMediaCell(cell: cell)
             cell.onDidSelectItem = {(indexPath) in
-                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[0]))
-                print("here")
+                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[indexPath.row]))
             }
             return cell
         case 5:
@@ -63,7 +62,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         default:
             let cell = homeTableView.dequeue() as ChannelsTableViewCell
             cell.onDidSelectItem = {(indexPath) in
-                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[0]))
+                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[indexPath.row]))
             }
             return cell
         }

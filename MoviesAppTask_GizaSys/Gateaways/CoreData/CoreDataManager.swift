@@ -26,8 +26,8 @@ class CoreDataManager: NSObject {
         
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            container.viewContext.automaticallyMergesChangesFromParent = true
+//            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+//            container.viewContext.automaticallyMergesChangesFromParent = true
             if let error = error as NSError? {
                 
                 fatalError("Unresolved error \(error), \(error.userInfo)")

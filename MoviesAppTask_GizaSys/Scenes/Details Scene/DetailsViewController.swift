@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 //MARK: - DetailsViewProtocol
 protocol DetailsViewProtocol: AnyObject {
     var presenter: DetailsPresenterProtocol? {get}
+    func setImage(with url: URL)
 }
 
 //MARK: - DetailsViewController
@@ -21,13 +23,16 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = presenter?.title
+        presenter?.intiateView()
        
     }
-    
 }
 
 //MARK: - Confirming to DetailsViewProtocol
 extension DetailsViewController: DetailsViewProtocol{
+    func setImage(with url: URL) {
+        
+        detailsImageView.kf.setImage(with: url)
+    }
     
 }

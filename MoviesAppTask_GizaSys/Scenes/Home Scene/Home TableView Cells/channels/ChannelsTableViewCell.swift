@@ -29,7 +29,6 @@ class ChannelsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         registerCells()
-        showLoader()
         
     }
 
@@ -45,8 +44,8 @@ class ChannelsTableViewCell: UITableViewCell {
         channelImageLoader.startAnimating()
     }
     private func hideLoader(){
-        channelImageLoader.stopAnimating()
         channelImageLoader.isHidden = true
+        channelImageLoader.stopAnimating()
         
     }
     
@@ -83,6 +82,7 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
 //MARK: - ChannelsTableViewCell confiming to ChannelTVCellProtocol
 extension ChannelsTableViewCell: ChannelTVCellProtocol{
     func configureTableViewCell(channel: Channel) {
+        showLoader()
         self.channel = channel
         sectionNameLabel.text = channel.title
         guard let urlString = channel.iconAssetURL, let url = URL(string: urlString) else{

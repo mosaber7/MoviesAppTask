@@ -22,7 +22,6 @@
 		05D958BB26F7710D00292293 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D958BA26F7710D00292293 /* SceneDelegate.swift */; };
 		05D958BD26F7710D00292293 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D958BC26F7710D00292293 /* HomeViewController.swift */; };
 		05D958C026F7710D00292293 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D958BE26F7710D00292293 /* Main.storyboard */; };
-		05D958C326F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05D958C126F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodeld */; };
 		05D958C526F7710E00292293 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D958C426F7710E00292293 /* Assets.xcassets */; };
 		05D958C826F7710E00292293 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D958C626F7710E00292293 /* LaunchScreen.storyboard */; };
 		05D958D326F7710E00292293 /* MoviesAppTask_GizaSysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D958D226F7710E00292293 /* MoviesAppTask_GizaSysTests.swift */; };
@@ -80,7 +79,6 @@
 		05D958BA26F7710D00292293 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		05D958BC26F7710D00292293 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		05D958BF26F7710D00292293 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		05D958C226F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesAppTask_GizaSys.xcdatamodel; sourceTree = "<group>"; };
 		05D958C426F7710E00292293 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05D958C726F7710E00292293 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05D958C926F7710E00292293 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				05D958B726F7710D00292293 /* MoviesAppTask_GizaSys */,
-				05D9590E26F782BA00292293 /* Configurations */,
 				05D958D126F7710E00292293 /* MoviesAppTask_GizaSysTests */,
 				05D958DC26F7710E00292293 /* MoviesAppTask_GizaSysUITests */,
 				05D958B626F7710D00292293 /* Products */,
@@ -240,6 +237,7 @@
 				05D9590B26F7826900292293 /* Gateaways */,
 				05D958EE26F77B5D00292293 /* Scenes */,
 				05D958BE26F7710D00292293 /* Main.storyboard */,
+				05D9590E26F782BA00292293 /* Configurations */,
 				05D958C926F7710E00292293 /* Info.plist */,
 				05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */,
 			);
@@ -249,6 +247,8 @@
 		05D958D126F7710E00292293 /* MoviesAppTask_GizaSysTests */ = {
 			isa = PBXGroup;
 			children = (
+				05EE3CF826FB6E7C00ABEDB8 /* Home Tests */,
+				05EE3CF926FB6E8700ABEDB8 /* Details Tests */,
 				05D958D226F7710E00292293 /* MoviesAppTask_GizaSysTests.swift */,
 				05D958D426F7710E00292293 /* Info.plist */,
 			);
@@ -316,7 +316,6 @@
 		05D9590D26F7828700292293 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				05D958C126F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodeld */,
 				05D9590F26F7831100292293 /* CoreDataManager.swift */,
 				05D9593326F7BFB000292293 /* Constants.swift */,
 			);
@@ -351,6 +350,20 @@
 				05B6055026F8DA7C00523B4D /* UITableView+Extension.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		05EE3CF826FB6E7C00ABEDB8 /* Home Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home Tests";
+			sourceTree = "<group>";
+		};
+		05EE3CF926FB6E8700ABEDB8 /* Details Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Details Tests";
 			sourceTree = "<group>";
 		};
 		696B892539921B76BC12E6A4 /* Pods */ = {
@@ -616,7 +629,6 @@
 				05D958B926F7710D00292293 /* AppDelegate.swift in Sources */,
 				05D9590226F77BB900292293 /* HomeRouter.swift in Sources */,
 				05B6054B26F8D9D500523B4D /* ChannelsCollectionViewCell.swift in Sources */,
-				05D958C326F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodeld in Sources */,
 				05B6054326F8D75700523B4D /* ChannelsTableViewCell.swift in Sources */,
 				05D9590726F7826500292293 /* NetworkManager.swift in Sources */,
 				05D9591826F7A43700292293 /* MoviesRequestFactory.swift in Sources */,
@@ -967,16 +979,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		05D958C126F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				05D958C226F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodel */,
-			);
-			currentVersion = 05D958C226F7710D00292293 /* MoviesAppTask_GizaSys.xcdatamodel */;
-			path = MoviesAppTask_GizaSys.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

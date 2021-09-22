@@ -40,6 +40,7 @@ class CategoryContainer: NSManagedObject ,Codable {
     }
     
 }
+//MARK: - DataCodingKeys
  enum DataCodingKeys: String, CodingKey {
     case categories
 }

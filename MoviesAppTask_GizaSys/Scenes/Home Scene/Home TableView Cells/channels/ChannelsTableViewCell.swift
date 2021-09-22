@@ -8,6 +8,8 @@
 import UIKit
 import Kingfisher
 
+
+//MARK: - Channel Table View Cell Protocol
 protocol ChannelTVCellProtocol {
     func configureTableViewCell(channel: Channel)
 }
@@ -37,6 +39,8 @@ class ChannelsTableViewCell: UITableViewCell {
     
 }
 
+// MARK:- Collection View setup
+
 extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
@@ -58,6 +62,7 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
+//MARK: - ChannelsTableViewCell confiming to ChannelTVCellProtocol
 extension ChannelsTableViewCell: ChannelTVCellProtocol{
     func configureTableViewCell(channel: Channel) {
         self.channel = channel

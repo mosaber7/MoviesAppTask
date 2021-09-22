@@ -22,7 +22,7 @@ class CoreDataManager: NSObject {
     lazy var persistentContainer: NSPersistentContainer = {
 
         
-        let container = NSPersistentContainer(name: "MoviesAppTask_GizaSys")
+        let container = NSPersistentContainer(name: "MoviesApp")
         
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

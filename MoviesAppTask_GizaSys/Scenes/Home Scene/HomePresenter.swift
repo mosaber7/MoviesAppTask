@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: - Home Presenter Protocol
 protocol  HomePresenterProtocol {
     var view: HomeViewProtocol?{get}
     var numberOfRowsInSection: Int{get}
@@ -28,6 +29,7 @@ protocol  HomePresenterProtocol {
     
 }
 
+//MARK: - Home Presenter
 class HomePresenter{
     weak var view: HomeViewProtocol?
     private var interactor: HomeInteractorProtocol?
@@ -47,13 +49,15 @@ class HomePresenter{
     }
 }
 
+//MARK: - Home Presenter setup
 extension HomePresenter: HomePresenterProtocol {
     
     func intiateView() {
 //        self.interactor?.getCategories()
 //        self.interactor?.getMedia()
-//        self.view?.reloadData()
-//       self.interactor?.getChannels()
+       self.interactor?.getChannels()
+        self.view?.reloadData()
+
     }
     
     func categoryContainerFetchedWithError(error: String) {

@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-// MARK: - Welcome
+// MARK: - ChannelContainer
 @objc(ChannelContainer)
 class ChannelContainer: NSManagedObject, Codable {
     
@@ -40,6 +40,7 @@ class ChannelContainer: NSManagedObject, Codable {
     }
     
 }
+//MARK: - Data object Coding Keys
 enum ChannelDataCodingKeys: String, CodingKey {
     case channels
 }
@@ -105,13 +106,13 @@ class Channel:NSManagedObject, Codable {
     
 }
 
-// MARK: - CoverAsset
+// MARK: - CoverAsset Coding keys
 
 enum CoverAssetCodingKeys: String, CodingKey {
     case url
 }
 
-// MARK: - IconAsset
+// MARK: - IconAsset Coding keys
 enum IconAssetCodingKeys: String, CodingKey {
     case thumbnailUrl
 }

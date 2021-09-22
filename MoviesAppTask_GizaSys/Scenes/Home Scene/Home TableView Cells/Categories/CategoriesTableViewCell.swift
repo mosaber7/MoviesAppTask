@@ -7,11 +7,14 @@
 
 import UIKit
 
+
+//MARK: - CategoriesTableViewCellProtocol
 protocol CategoriesTableViewCellProtocol {
     func fillStackViews(categories: [Category])
     
 }
 
+//MARK: - CategoriesTableViewCell
 class CategoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var leadingStackView: UIStackView!
     @IBOutlet weak var trailingStackView: UIStackView!
@@ -29,6 +32,9 @@ class CategoriesTableViewCell: UITableViewCell {
     }
     
 }
+
+//MARK: - CategoriesTableViewCell confirming toCategoriesTableViewCellProtocol
+
 extension CategoriesTableViewCell: CategoriesTableViewCellProtocol{
     
     func fillStackViews(categories: [Category]) {
@@ -53,9 +59,7 @@ extension CategoriesTableViewCell: CategoriesTableViewCellProtocol{
             }
         }
     }
-    
-    
-    
+   
 }
 
 

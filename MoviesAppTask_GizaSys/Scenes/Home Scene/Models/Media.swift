@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-// MARK: - Welcome
+// MARK: - MediaContainer
 @objc(MediaContainer)
 class MediaContainer: NSManagedObject, Codable {
     @NSManaged var media: [Media]?

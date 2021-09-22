@@ -38,6 +38,8 @@
 		05D9593A26F7C0D400292293 /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9593926F7C0D400292293 /* Array + Extension.swift */; };
 		05D9593F26F7C1AB00292293 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9593E26F7C1AB00292293 /* Channel.swift */; };
 		05D9594426F7D69600292293 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9594326F7D69600292293 /* Media.swift */; };
+		05EE3CE726FB317900ABEDB8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE3CE626FB317900ABEDB8 /* DetailsViewController.swift */; };
+		05EE3CEC26FB320D00ABEDB8 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */; };
 		05FCDB1126FA2AD700007C94 /* MoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */; };
 		82FBB17C2CBFD9D5C9264327 /* Pods_MoviesAppTask_GizaSysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E32BE82EDB5CEFA1103C21 /* Pods_MoviesAppTask_GizaSysTests.framework */; };
 		A07EB09D0206E05B1CD1615E /* Pods_MoviesAppTask_GizaSys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1BC9D2FD9AFCB0F623D178 /* Pods_MoviesAppTask_GizaSys.framework */; };
@@ -99,6 +101,8 @@
 		05D9593926F7C0D400292293 /* Array + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
 		05D9593E26F7C1AB00292293 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		05D9594326F7D69600292293 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		05EE3CE626FB317900ABEDB8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		05FCDB1026FA2AD700007C94 /* MoviesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesApp.xcdatamodel; sourceTree = "<group>"; };
 		0D90434251F90E6AD8D93AA2 /* Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CE896BF7B52AA4BF64C87EC /* Pods-MoviesAppTask_GizaSys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys.release.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys/Pods-MoviesAppTask_GizaSys.release.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 		05D958F026F77B7600292293 /* Details Scene */ = {
 			isa = PBXGroup;
 			children = (
+				05EE3CE626FB317900ABEDB8 /* DetailsViewController.swift */,
+				05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */,
 			);
 			path = "Details Scene";
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9592926F7AD8000292293 /* categories.swift in Sources */,
+				05EE3CE726FB317900ABEDB8 /* DetailsViewController.swift in Sources */,
 				05B6055726F8E4D200523B4D /* CategoriesTableViewCell.swift in Sources */,
 				05D958BD26F7710D00292293 /* HomeViewController.swift in Sources */,
 				05D958B926F7710D00292293 /* AppDelegate.swift in Sources */,
@@ -625,6 +632,7 @@
 				05D9593A26F7C0D400292293 /* Array + Extension.swift in Sources */,
 				05D9593F26F7C1AB00292293 /* Channel.swift in Sources */,
 				05D9594426F7D69600292293 /* Media.swift in Sources */,
+				05EE3CEC26FB320D00ABEDB8 /* DetailsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

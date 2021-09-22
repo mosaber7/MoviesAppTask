@@ -7,10 +7,13 @@
 
 import UIKit
 
+//MARK: - Home view protocl
 protocol HomeViewProtocol: AnyObject {
     var presenter: HomePresenterProtocol? {get}
     func reloadData()
 }
+
+//MARK:- Home View
 class HomeViewController: UIViewController {
     @IBOutlet weak var homeTableView: UITableView!
     var presenter: HomePresenterProtocol?
@@ -36,7 +39,7 @@ extension HomeViewController: HomeViewProtocol{
     }
     
 }
-
+//MARK: - Table View setup
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.presenter?.numberOfRowsInSection ?? 0

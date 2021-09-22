@@ -7,11 +7,16 @@
 
 import UIKit
 
+
+//MARK: - Media table view cell protocol
+
 protocol MediaTVCellProtocol {
     func configureCollectionCells(with media: [Media])
     func reloadData()
 }
 
+
+//MARK: - Media table view cell
 class MediaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mediaCollectionView: UICollectionView!
@@ -35,6 +40,7 @@ registerCell()
     
 }
 
+//MARK: - MediaTableViewCell conforming to collection View
 extension MediaTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         6
@@ -55,6 +61,8 @@ extension MediaTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
+
+//MARK: - MediaTableViewCell conforming to MediaTVCellProtocol
 
 extension MediaTableViewCell: MediaTVCellProtocol{
     func reloadData() {

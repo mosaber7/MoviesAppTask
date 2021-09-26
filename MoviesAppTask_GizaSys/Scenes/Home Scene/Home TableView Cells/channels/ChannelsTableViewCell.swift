@@ -11,6 +11,7 @@ import Kingfisher
 
 //MARK: - Channel Table View Cell Protocol
 protocol ChannelTVCellProtocol {
+    var presenter: HomePresenter?{get}
     func configureTableViewCell(channel: Channel)
 }
 
@@ -20,6 +21,10 @@ class ChannelsTableViewCell: UITableViewCell {
     @IBOutlet private weak var sectionNameLabel: UILabel!
     @IBOutlet private weak var eposidesCollectionView: UICollectionView!
     @IBOutlet weak var channelImageLoader: UIActivityIndicatorView!
+    
+    @IBOutlet private weak var eposidesLabel: UILabel!
+    
+    var presenter: HomePresenter?
     private var channel: Channel?
     
     // for navigation to details screen
@@ -27,7 +32,7 @@ class ChannelsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        sectionImageImageView.layer.cornerRadius = sectionImageImageView.frame.height / 2
         registerCells()
         
     }
@@ -60,7 +65,7 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.eposidesCollectionView.dequeue(for: indexPath) as ChannelsCollectionViewCell
-        guard let channel  = channel, let media = channel.latestMedia else {
+        guard let channel  = channel, let media = channel.latestMedia, indexPath.row < media.count else {
             return cell
         }
         cell.configCell(with: media[indexPath.row] )
@@ -85,12 +90,12 @@ extension ChannelsTableViewCell: ChannelTVCellProtocol{
         showLoader()
         self.channel = channel
         sectionNameLabel.text = channel.title
-        guard let urlString = channel.iconAssetURL, let url = URL(string: urlString) else{
+        eposidesLabel.text = "\(channel.mediaCount ?? 0) episodes"
+        guard let urlString = channel.coverAsset?.url, let url = URL(string: urlString) else{
             return
         }
         sectionImageImageView.kf.setImage(with: url)
         hideLoader()
     }
-    
-    
+  
 }

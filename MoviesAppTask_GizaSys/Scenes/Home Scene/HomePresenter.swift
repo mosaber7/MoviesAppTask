@@ -13,7 +13,8 @@ protocol  HomePresenterProtocol {
     var numberOfRowsInSection: Int{get}
     var categories: [Category]{get}
     var media: [Media]{get}
-
+    var channels: [Channel] {get}
+    
     
     func categoryContainerFetchedWithError(error: String)
     func categoryContainerFetchedSuccessfully(categories: [Category])
@@ -25,6 +26,7 @@ protocol  HomePresenterProtocol {
     func channelContainerFetchedWithError(error: String)
     
     func configureMediaCell(cell: MediaTVCellProtocol)
+    func configureChannelCell(cell: ChannelTVCellProtocol, index: Int)
     
     func intiateView()
     
@@ -37,10 +39,14 @@ class HomePresenter{
     private var router: HomeRouterProtocol?
     var categories:  [Category] = [Category]()
     var media = [Media]()
-    private var channels = [Channel]()
+    var channels = [Channel]()
     
     var numberOfRowsInSection: Int{
-        return 6
+        guard channels.count + 2 < 6 else {
+            return 6
+        }
+        print(channels.count + 2)
+        return channels.count + 2
     }
     
     init(view: HomeViewProtocol) {
@@ -54,11 +60,11 @@ class HomePresenter{
 extension HomePresenter: HomePresenterProtocol {
     
     func intiateView() {
-        self.interactor?.getCategories()
-        self.interactor?.getMedia()
-       self.interactor?.getChannels()
-        self.view?.reloadData()
-
+            self.interactor?.getCategories()
+            self.interactor?.getMedia()
+            self.interactor?.getChannels()
+        
+        
     }
     
     func categoryContainerFetchedWithError(error: String) {
@@ -74,7 +80,7 @@ extension HomePresenter: HomePresenterProtocol {
         self.media = media
         self.view?.reloadData()
         print("media fetched successfully")
-
+        
     }
     
     func mediaContainerFetchedWithError(error: String) {
@@ -85,16 +91,23 @@ extension HomePresenter: HomePresenterProtocol {
         self.channels = channels
         self.view?.reloadData()
         print("channels fetched successfully")
-
+        
     }
     
     func channelContainerFetchedWithError(error: String) {
         print("channels fetching error: \(error)")
-
+        
     }
     func configureMediaCell(cell: MediaTVCellProtocol){
         cell.configureCollectionCells(with: media)
         cell.reloadData()
+    }
+    func configureChannelCell(cell: ChannelTVCellProtocol, index: Int){
+        guard index < channels.count else {
+            return
+        }
+        
+        cell.configureTableViewCell(channel: channels[index])
     }
     
     

@@ -12,7 +12,7 @@ class NetworkManager{
     // Block to handle responses in case of success and have data
     typealias NetworkSuccessBlock = (_ T:Decodable?)->Void
     
-    static func retrieveData<T>(modelType: T.Type, requestType: MoviesRequestFactory ,successBlock:@escaping NetworkSuccessBlock) where T : Decodable{
+    static func retrieveDataWithCaching<T>(modelType: T.Type, requestType: MoviesRequestFactory ,successBlock:@escaping NetworkSuccessBlock) where T : Decodable{
     
     let req = requestType
         AF.request(req).responseJSON { (response) in
@@ -43,6 +43,19 @@ class NetworkManager{
     
   
     
+    static func retrieveData( compeletion: @escaping (Result<ChannelContainer, AFError>)-> Void){
+        
+        AF.request(MoviesRequestFactory.channels).responseDecodable { (response: DataResponse<ChannelContainer, AFError>) in
+            switch response.result{
+            
+            case .success(let channelContainer):
+                compeletion(.success(channelContainer))
+            case .failure(let error):
+                compeletion(.failure(error))
+            }
+        }
+        
     
+    }
     
 }

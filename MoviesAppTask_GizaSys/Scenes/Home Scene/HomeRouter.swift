@@ -36,14 +36,26 @@ extension HomeRouter: HomeRouterProtocol{
 
 enum HomeNavigationRouter: Route {
     
-    case Details(Media?)    
+    case MediaDetails(Media)
+    case ChannelDetails(LatestMedia)
     var destination: UIViewController{
         switch self {
-        case .Details(let channel):
+        case .MediaDetails(let media):
             guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "\(DetailsViewController.self)") as? DetailsViewController else{
                 fatalError("Couldn't find VC with the identifier \(DetailsViewController.self)")
             }
-            let detailsPresenter = DetailsPresenter(view: detailsVC, channel: channel)
+            let detailsPresenter = MediaDetailsPresenter(view: detailsVC, media: media)
+            
+            detailsVC.presenter = detailsPresenter
+           return detailsVC
+            
+            
+        case .ChannelDetails(let media):
+            guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "\(DetailsViewController.self)") as? DetailsViewController else{
+                fatalError("Couldn't find VC with the identifier \(DetailsViewController.self)")
+            }
+            let detailsPresenter = CahnnelDetailsPresenter(view: detailsVC, media: media)
+            
             detailsVC.presenter = detailsPresenter
            return detailsVC
         }
@@ -52,7 +64,10 @@ enum HomeNavigationRouter: Route {
     
     var style: NavigationStyle{
         switch self {
-        case .Details:
+        case .MediaDetails:
+            return .modal
+            
+        case .ChannelDetails:
             return .modal
         }
     }

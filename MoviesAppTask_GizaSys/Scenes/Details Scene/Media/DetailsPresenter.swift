@@ -11,27 +11,25 @@ import Foundation
 //MARK:- DetailsPresenterProtocol
 protocol DetailsPresenterProtocol {
     var view: DetailsViewProtocol? {get}
-    var title: String{get}
     func intiateView()
 }
 
 //MARK:- DetailsPresenter
-class DetailsPresenter{
+class MediaDetailsPresenter{
     weak var view: DetailsViewProtocol?
-    var channel : Media?
-    init(view: DetailsViewProtocol, channel: Media?) {
+    var media : Media?
+    init(view: DetailsViewProtocol, media: Media?) {
         self.view = view
-        self.channel = channel
+        self.media = media
     }
-    var title: String{
-        return channel?.title ?? "??"
-    }
+    
     
 }
 //MARK:- DetailsPresenter confirming to DetailsPresenterProtocol
-extension DetailsPresenter: DetailsPresenterProtocol{
+extension MediaDetailsPresenter: DetailsPresenterProtocol{
+
     func intiateView() {
-        guard let urlString = channel?.coverAssetURL, let url = URL(string: urlString) else {
+        guard let urlString = media?.coverAssetURL, let url = URL(string: urlString) else {
             return
         }
         view?.setImage(with: url)

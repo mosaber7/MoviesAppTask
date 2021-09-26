@@ -18,11 +18,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Zay-J0-uKH">
-                        <rect key="frame" x="0.0" y="96" width="501" height="270"/>
+                        <rect key="frame" x="0.0" y="96" width="501" height="380"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <color key="tintColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="270" id="3DC-d4-e2N"/>
+                            <constraint firstAttribute="height" constant="380" id="3DC-d4-e2N"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YeC-Zd-HsN">
                             <size key="itemSize" width="128" height="128"/>
@@ -35,24 +35,24 @@
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="wB1-Cw-ACD"/>
                         </connections>
                     </collectionView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XBh-KY-lI8">
-                        <rect key="frame" x="8" y="30" width="50" height="50"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XBh-KY-lI8">
+                        <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="iDL-qf-Nyz"/>
-                            <constraint firstAttribute="height" constant="50" id="sw4-Qg-Mge"/>
+                            <constraint firstAttribute="width" constant="60" id="iDL-qf-Nyz"/>
+                            <constraint firstAttribute="height" constant="60" id="sw4-Qg-Mge"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="78 eposides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1j-uN-e9b">
-                        <rect key="frame" x="66" y="56" width="435" height="24"/>
+                        <rect key="frame" x="68" y="56" width="433" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="L58-lm-DDb"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="textColor" name="MainLabelColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="MindValley Mentoring" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nze-kK-QnT">
-                        <rect key="frame" x="66" y="24" width="435" height="24"/>
+                        <rect key="frame" x="68" y="24" width="433" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="zn0-TM-KOB"/>
                         </constraints>
@@ -61,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JyD-Dn-5le">
-                        <rect key="frame" x="18" y="40" width="30" height="30"/>
+                        <rect key="frame" x="20" y="40" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="ti3-pK-zwy"/>
                             <constraint firstAttribute="width" constant="30" id="zPc-dJ-YFc"/>
@@ -71,7 +71,7 @@
                 </subviews>
                 <color key="backgroundColor" name="BackgroundColor"/>
                 <constraints>
-                    <constraint firstItem="XBh-KY-lI8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4db-yW-DnK"/>
+                    <constraint firstItem="XBh-KY-lI8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4db-yW-DnK"/>
                     <constraint firstAttribute="trailing" secondItem="nze-kK-QnT" secondAttribute="trailing" id="56K-eD-HEj"/>
                     <constraint firstItem="nze-kK-QnT" firstAttribute="leading" secondItem="XBh-KY-lI8" secondAttribute="trailing" constant="8" id="9lE-Rm-f34"/>
                     <constraint firstItem="nze-kK-QnT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="LVX-Ja-Jkz"/>
@@ -92,6 +92,7 @@
             <connections>
                 <outlet property="channelImageLoader" destination="JyD-Dn-5le" id="hew-Zg-4nn"/>
                 <outlet property="eposidesCollectionView" destination="Zay-J0-uKH" id="ACh-R2-z7A"/>
+                <outlet property="eposidesLabel" destination="x1j-uN-e9b" id="ls9-fK-w1v"/>
                 <outlet property="sectionImageImageView" destination="XBh-KY-lI8" id="Neh-s3-15U"/>
                 <outlet property="sectionNameLabel" destination="nze-kK-QnT" id="KA2-mK-mEf"/>
             </connections>

@@ -21,7 +21,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         registerCells()
         presenter = HomePresenter(view: self)
-        presenter?.intiateView()
+        DispatchQueue.main.async {
+            self.presenter?.intiateView()
+        }
         
     }
     
@@ -35,7 +37,6 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewProtocol{
     func reloadData() {
         homeTableView.reloadData()
-        
     }
     
 }
@@ -52,17 +53,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = homeTableView.dequeue() as MediaTableViewCell
             self.presenter?.configureMediaCell(cell: cell)
             cell.onDidSelectItem = {(indexPath) in
-                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[indexPath.row]))
+                if indexPath.row < self.presenter?.media.count ?? 0, let media = self.presenter?.media[indexPath.row] {
+                    self.navigate(to: HomeNavigationRouter.MediaDetails(media))
+                }
+                
             }
             return cell
-        case 5:
+            
+        case ((presenter?.numberOfRowsInSection ?? 0) - 1) :
             let cell = homeTableView.dequeue() as CategoriesTableViewCell
             cell.fillStackViews(categories: presenter?.categories ?? [])
             return cell
+            
+            
         default:
             let cell = homeTableView.dequeue() as ChannelsTableViewCell
-            cell.onDidSelectItem = {(indexPath) in
-                self.navigate(to: HomeNavigationRouter.Details(self.presenter?.media[indexPath.row]))
+            self.presenter?.configureChannelCell(cell: cell, index: indexPath.row - 1)
+            cell.onDidSelectItem = {(collectionIndexPath) in
+
+                guard let channel = self.presenter?.channels[indexPath.row - 1], let media = channel.latestMedia?[collectionIndexPath.row]  else {
+                    return
+                }
+                self.navigate(to: HomeNavigationRouter.ChannelDetails(media)
+                )
             }
             return cell
         }

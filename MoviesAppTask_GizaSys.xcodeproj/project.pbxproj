@@ -39,6 +39,7 @@
 		05D9594426F7D69600292293 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9594326F7D69600292293 /* Media.swift */; };
 		05EE3CE726FB317900ABEDB8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE3CE626FB317900ABEDB8 /* DetailsViewController.swift */; };
 		05EE3CEC26FB320D00ABEDB8 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */; };
+		05EE3D1126FB950F00ABEDB8 /* ChannelDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE3D1026FB950F00ABEDB8 /* ChannelDetailsPresenter.swift */; };
 		05FCDB1126FA2AD700007C94 /* MoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05FCDB0F26FA2AD700007C94 /* MoviesApp.xcdatamodeld */; };
 		82FBB17C2CBFD9D5C9264327 /* Pods_MoviesAppTask_GizaSysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E32BE82EDB5CEFA1103C21 /* Pods_MoviesAppTask_GizaSysTests.framework */; };
 		A07EB09D0206E05B1CD1615E /* Pods_MoviesAppTask_GizaSys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1BC9D2FD9AFCB0F623D178 /* Pods_MoviesAppTask_GizaSys.framework */; };
@@ -101,6 +102,7 @@
 		05D9594326F7D69600292293 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		05EE3CE626FB317900ABEDB8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		05EE3D1026FB950F00ABEDB8 /* ChannelDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailsPresenter.swift; sourceTree = "<group>"; };
 		05FCDB1026FA2AD700007C94 /* MoviesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoviesApp.xcdatamodel; sourceTree = "<group>"; };
 		0D90434251F90E6AD8D93AA2 /* Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests/Pods-MoviesAppTask_GizaSys-MoviesAppTask_GizaSysUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CE896BF7B52AA4BF64C87EC /* Pods-MoviesAppTask_GizaSys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAppTask_GizaSys.release.xcconfig"; path = "Target Support Files/Pods-MoviesAppTask_GizaSys/Pods-MoviesAppTask_GizaSys.release.xcconfig"; sourceTree = "<group>"; };
@@ -290,7 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				05EE3CE626FB317900ABEDB8 /* DetailsViewController.swift */,
-				05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */,
+				05EE3D1626FB952400ABEDB8 /* Channel */,
+				05EE3D1526FB951600ABEDB8 /* Media */,
 			);
 			path = "Details Scene";
 			sourceTree = "<group>";
@@ -364,6 +367,22 @@
 			children = (
 			);
 			path = "Details Tests";
+			sourceTree = "<group>";
+		};
+		05EE3D1526FB951600ABEDB8 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				05EE3CEB26FB320D00ABEDB8 /* DetailsPresenter.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		05EE3D1626FB952400ABEDB8 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				05EE3D1026FB950F00ABEDB8 /* ChannelDetailsPresenter.swift */,
+			);
+			path = Channel;
 			sourceTree = "<group>";
 		};
 		696B892539921B76BC12E6A4 /* Pods */ = {
@@ -631,6 +650,7 @@
 				05B6054B26F8D9D500523B4D /* ChannelsCollectionViewCell.swift in Sources */,
 				05B6054326F8D75700523B4D /* ChannelsTableViewCell.swift in Sources */,
 				05D9590726F7826500292293 /* NetworkManager.swift in Sources */,
+				05EE3D1126FB950F00ABEDB8 /* ChannelDetailsPresenter.swift in Sources */,
 				05D9591826F7A43700292293 /* MoviesRequestFactory.swift in Sources */,
 				05D958FD26F77BA900292293 /* HomeInteractor.swift in Sources */,
 				05D9591026F7831100292293 /* CoreDataManager.swift in Sources */,

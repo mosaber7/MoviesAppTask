@@ -7,13 +7,10 @@
 
 import Foundation
 
-//MARK: - Home Presenter Protocol
-protocol  HomePresenterProtocol {
+//MARK: - HomeView Presenter Protocol
+protocol  HomeViewPresenterProtocol {
     var view: HomeViewProtocol?{get}
     var numberOfRowsInSection: Int{get}
-    var categories: [Category]{get}
-    var media: [Media]{get}
-    var channels: [Channel] {get}
     
     
     func categoryContainerFetchedWithError(error: String)
@@ -27,8 +24,27 @@ protocol  HomePresenterProtocol {
     
     func configureMediaCell(cell: MediaTVCellProtocol)
     func configureChannelCell(cell: ChannelTVCellProtocol, index: Int)
+    func configureCategoryCell(cell: CategoriesTableViewCellProtocol)
+    
     
     func intiateView()
+    
+}
+
+protocol MediaViewPresenterProtocol {
+    func configureCell(cell: MediaCollectionViewCellProtocol, for index: Int)
+    func mediaCVClicked(at index: Int)
+}
+
+protocol ChannelViewPresenterProtocol {
+    func configureCell(cell: ChannelCVCellProtocol, tvIndex : Int, cvIndex: Int)
+    func channelCVClicked(at TVindex:Int, and CVIndex: Int)
+    
+    
+    
+    func getChannelTitle(for index: Int)-> String
+    func getEposideLabel(for index: Int)-> String
+    func getCoverAssetUrl(for index: Int)-> URL?
     
 }
 
@@ -37,9 +53,13 @@ class HomePresenter{
     weak var view: HomeViewProtocol?
     private var interactor: HomeInteractorProtocol?
     private var router: HomeRouterProtocol?
-    var categories:  [Category] = [Category]()
-    var media = [Media]()
-    var channels = [Channel]()
+    private var categories:  [Category] = [Category]()
+    private var media = [Media]()
+    private var channels = [Channel](){
+        didSet{
+            self.view?.reloadData()
+        }
+    }
     
     var numberOfRowsInSection: Int{
         guard channels.count + 2 < 6 else {
@@ -57,12 +77,12 @@ class HomePresenter{
 }
 
 //MARK: - Home Presenter setup
-extension HomePresenter: HomePresenterProtocol {
+extension HomePresenter: HomeViewPresenterProtocol {
     
     func intiateView() {
-            self.interactor?.getCategories()
-            self.interactor?.getMedia()
-            self.interactor?.getChannels()
+        self.interactor?.getCategories()
+        self.interactor?.getMedia()
+        self.interactor?.getChannels()
         
         
     }
@@ -99,16 +119,74 @@ extension HomePresenter: HomePresenterProtocol {
         
     }
     func configureMediaCell(cell: MediaTVCellProtocol){
-        cell.configureCollectionCells(with: media)
+        cell.configureCollectionCells(with: self)
         cell.reloadData()
+        
     }
     func configureChannelCell(cell: ChannelTVCellProtocol, index: Int){
-        guard index < channels.count else {
-            return
-        }
+        cell.configureTableViewCell(with: self, tvRow: index)
+        cell.reloadData()
         
-        cell.configureTableViewCell(channel: channels[index])
+        
+    }
+    func configureCategoryCell(cell: CategoriesTableViewCellProtocol) {
+        cell.fillStackViews(categories: self.categories)
+        
+        
+    }
+    
+}
+
+extension HomePresenter: MediaViewPresenterProtocol{
+    func mediaCVClicked(at index: Int) {
+        let media = self.media[index]
+        let detailsView = HomeNavigationRouter.MediaDetails(media)
+        self.view?.navigate(to: detailsView)
     }
     
     
+    func configureCell(cell: MediaCollectionViewCellProtocol, for index: Int) {
+        guard index < media.count else{
+            return
+        }
+        cell.configureCell(with: self.media[index])
+        
+    }
+    
 }
+
+extension HomePresenter: ChannelViewPresenterProtocol{
+    func getEposideLabel(for index: Int) -> String {
+        "\(channels[index].mediaCount ?? 0) episodes"
+    }
+    
+    func getCoverAssetUrl(for index: Int) -> URL? {
+        guard let urlString = channels[index].coverAsset?.url, let url = URL(string: urlString) else{
+            return nil
+        }
+        return url
+    }
+    
+    func getChannelTitle(for index: Int) -> String {
+        self.channels[index].title ?? "??"
+    }
+    
+    
+    func configureCell(cell: ChannelCVCellProtocol, tvIndex : Int, cvIndex: Int) {
+        guard let currentLatestMedia = self.channels[tvIndex].latestMedia?[cvIndex] else {
+            return
+        }
+        cell.configureCVCell(with: currentLatestMedia)
+    }
+    
+    func channelCVClicked(at TVindex:Int, and CVIndex: Int){
+        guard let latestMedia = self.channels[TVindex].latestMedia?[CVIndex] else{
+            return
+        }
+        let detailsRoute = HomeNavigationRouter.ChannelDetails(latestMedia)
+        self.view?.navigate(to: detailsRoute)
+        
+    }
+    
+}
+

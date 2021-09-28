@@ -11,7 +11,7 @@ import UIKit
 //MARK: - Media table view cell protocol
 
 protocol MediaTVCellProtocol {
-    func configureCollectionCells(with media: [Media])
+    func configureCollectionCells(with presenter: MediaViewPresenterProtocol)
     func reloadData()
 }
 
@@ -19,19 +19,18 @@ protocol MediaTVCellProtocol {
 //MARK: - Media table view cell
 class MediaTableViewCell: UITableViewCell {
     @IBOutlet weak var mediaCollectionView: UICollectionView!
-    private var media = [Media]()
+    private var presenter: MediaViewPresenterProtocol?
     
-    // for navigation
-    var onDidSelectItem: ((IndexPath) -> ())?
-
+  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-registerCell()
+        registerCell()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -50,11 +49,7 @@ extension MediaTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.mediaCollectionView.dequeue(for: indexPath) as MediaCollectionViewCell
-        guard indexPath.row < media.count else {
-            return cell
-        }
-        let currentMedia = media[indexPath.row]
-        cell.configureCell(with: currentMedia)
+        self.presenter?.configureCell(cell: cell, for: indexPath.row)
         return cell
     }
     
@@ -63,7 +58,7 @@ extension MediaTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.onDidSelectItem?(indexPath)
+        self.presenter?.mediaCVClicked(at: indexPath.row)
     }
     
 }
@@ -75,9 +70,9 @@ extension MediaTableViewCell: MediaTVCellProtocol{
         self.mediaCollectionView.reloadData()
     }
     
-    func configureCollectionCells(with media: [Media]) {
-        self.media = media
-
+    func configureCollectionCells(with presenter: MediaViewPresenterProtocol) {
+        self.presenter = presenter
+        
     }
-
+    
 }

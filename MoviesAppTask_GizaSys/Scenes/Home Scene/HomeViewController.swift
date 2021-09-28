@@ -8,19 +8,21 @@
 import UIKit
 
 //MARK: - Home view protocl
-protocol HomeViewProtocol: AnyObject {
-    var presenter: HomePresenterProtocol? {get}
+protocol HomeViewProtocol: AnyObject, NavigationRoute {
+    var presenter: HomeViewPresenterProtocol? {get}
     func reloadData()
 }
 
 //MARK:- Home View
 class HomeViewController: UIViewController {
+    
     @IBOutlet weak var homeTableView: UITableView!
-    var presenter: HomePresenterProtocol?
+    var presenter: HomeViewPresenterProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         presenter = HomePresenter(view: self)
+        
         DispatchQueue.main.async {
             self.presenter?.intiateView()
         }
@@ -37,6 +39,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewProtocol{
     func reloadData() {
         homeTableView.reloadData()
+        
     }
     
 }
@@ -49,34 +52,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
+        //media Cell
         case 0:
             let cell = homeTableView.dequeue() as MediaTableViewCell
             self.presenter?.configureMediaCell(cell: cell)
-            cell.onDidSelectItem = {(indexPath) in
-                if indexPath.row < self.presenter?.media.count ?? 0, let media = self.presenter?.media[indexPath.row] {
-                    self.navigate(to: HomeNavigationRouter.MediaDetails(media))
-                }
-                
-            }
             return cell
-            
+         
+        // last Table view cell
         case ((presenter?.numberOfRowsInSection ?? 0) - 1) :
             let cell = homeTableView.dequeue() as CategoriesTableViewCell
-            cell.fillStackViews(categories: presenter?.categories ?? [])
+            self.presenter?.configureCategoryCell(cell: cell)
             return cell
             
-            
+       //channels cell
         default:
             let cell = homeTableView.dequeue() as ChannelsTableViewCell
             self.presenter?.configureChannelCell(cell: cell, index: indexPath.row - 1)
-            cell.onDidSelectItem = {(collectionIndexPath) in
-
-                guard let channel = self.presenter?.channels[indexPath.row - 1], let media = channel.latestMedia?[collectionIndexPath.row]  else {
-                    return
-                }
-                self.navigate(to: HomeNavigationRouter.ChannelDetails(media)
-                )
-            }
             return cell
         }
         

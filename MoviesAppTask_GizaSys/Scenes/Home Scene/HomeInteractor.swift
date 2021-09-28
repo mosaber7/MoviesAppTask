@@ -8,15 +8,15 @@
 import Foundation
 
 protocol HomeInteractorProtocol: AnyObject {
-    var presenter: HomePresenterProtocol?{get}
+    var presenter: HomeViewPresenterProtocol?{get}
     func getCategories()
     func getMedia()
     func getChannels()
 }
 
 class HomeInteractor{
-    var presenter: HomePresenterProtocol?
-    init(presenter: HomePresenterProtocol) {
+    var presenter: HomeViewPresenterProtocol?
+    init(presenter: HomeViewPresenterProtocol) {
         self.presenter = presenter
     }
     
@@ -31,7 +31,9 @@ extension HomeInteractor: HomeInteractorProtocol{
                 return
             }
             
-            self?.presenter?.categoryContainerFetchedSuccessfully(categories: categories)
+                self?.presenter?.categoryContainerFetchedSuccessfully(categories: categories)
+            
+            
         }
     }
     
@@ -42,7 +44,9 @@ extension HomeInteractor: HomeInteractorProtocol{
                 self?.presenter?.mediaContainerFetchedWithError(error: "Could not cast the response")
                 return
             }
-            self?.presenter?.mediaContainerFetchedSuccessfully(media: media)
+            
+                self?.presenter?.mediaContainerFetchedSuccessfully(media: media)
+            
         }
     }
     
@@ -67,11 +71,10 @@ extension HomeInteractor: HomeInteractorProtocol{
                 guard let channels = container.data?.channels else {
                     return
                 }
-                print(channels)
                 self.presenter?.channelContainerFetchedSuccessfully(channels: channels)
             case .failure(let error):
                 self.presenter?.channelContainerFetchedWithError(error: error.localizedDescription)
-            }
+                        }
         }
     }
 }

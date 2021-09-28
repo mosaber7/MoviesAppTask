@@ -11,8 +11,8 @@ import Kingfisher
 
 //MARK: - Channel Table View Cell Protocol
 protocol ChannelTVCellProtocol {
-    var presenter: HomePresenter?{get}
-    func configureTableViewCell(channel: Channel)
+    func configureTableViewCell(with presenter: ChannelViewPresenterProtocol, tvRow: Int)
+    func reloadData()
 }
 
 class ChannelsTableViewCell: UITableViewCell {
@@ -24,8 +24,8 @@ class ChannelsTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var eposidesLabel: UILabel!
     
-    var presenter: HomePresenter?
-    private var channel: Channel?
+    private var presenter: ChannelViewPresenterProtocol?
+    private var tableViewCurrentRow: Int?
     
     // for navigation to details screen
     var onDidSelectItem: ((IndexPath) -> ())?
@@ -54,6 +54,17 @@ class ChannelsTableViewCell: UITableViewCell {
         
     }
     
+    private func configureCell(sectionNameLabel: String, eposidesLabel: String, url: URL?) {
+        showLoader()
+        self.sectionNameLabel.text = sectionNameLabel
+        self.eposidesLabel.text = eposidesLabel
+        guard let url = url else{
+            return
+        }
+        sectionImageImageView.kf.setImage(with: url)
+        hideLoader()
+    }
+    
 }
 
 // MARK:- Collection View setup
@@ -65,17 +76,18 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.eposidesCollectionView.dequeue(for: indexPath) as ChannelsCollectionViewCell
-        guard let channel  = channel, let media = channel.latestMedia, indexPath.row < media.count else {
-            return cell
-        }
-        cell.configCell(with: media[indexPath.row] )
+        self.presenter?.configureCell(cell: cell, tvIndex: tableViewCurrentRow ?? 0, cvIndex: indexPath.row)
         
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.onDidSelectItem?(indexPath)
+        
+        guard let tableViewCurrentRow = self.tableViewCurrentRow else{
+            return
+        }
+        self.presenter?.channelCVClicked(at: tableViewCurrentRow, and: indexPath.row)
     }
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: eposidesCollectionView.frame.width * 0.4, height: eposidesCollectionView.frame.height)
@@ -86,16 +98,14 @@ extension ChannelsTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
 
 //MARK: - ChannelsTableViewCell confiming to ChannelTVCellProtocol
 extension ChannelsTableViewCell: ChannelTVCellProtocol{
-    func configureTableViewCell(channel: Channel) {
-        showLoader()
-        self.channel = channel
-        sectionNameLabel.text = channel.title
-        eposidesLabel.text = "\(channel.mediaCount ?? 0) episodes"
-        guard let urlString = channel.coverAsset?.url, let url = URL(string: urlString) else{
-            return
-        }
-        sectionImageImageView.kf.setImage(with: url)
-        hideLoader()
+    func reloadData() {
+        eposidesCollectionView.reloadData()
+    }
+    
+    func configureTableViewCell(with presenter: ChannelViewPresenterProtocol, tvRow: Int) {
+        self.presenter = presenter
+        self.tableViewCurrentRow = tvRow
+        configureCell(sectionNameLabel: presenter.getChannelTitle(for: tvRow), eposidesLabel: presenter.getEposideLabel(for: tvRow), url: presenter.getCoverAssetUrl(for: tvRow))
     }
   
 }
